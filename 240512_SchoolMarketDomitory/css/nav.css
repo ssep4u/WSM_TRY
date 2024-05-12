@@ -63,6 +63,7 @@ nav {
     font-size: 28px;    /* 아이콘 조금 크게 하자 */
 }
 
+/* mobile */
 @media screen and (max-width: 600px) {
     .nav.container {
         padding: 0 20px;    /* 왼쪽, 오른쪽만 여백 좀 줄이자 */
@@ -77,6 +78,7 @@ nav {
         /* row-gap: 20px; */
         background-color:  hsla(200, 100%, 25%, 0.6);   /* 배경색 다른 것으로 칠해보자 */
         overflow: hidden;   /* 크기보다 크면 안 보이게 하자 */
+        height: 0;
     }
     .nav-item {
         padding: 0.5rem 1rem;   /* 위 오 아 왼 */
@@ -89,5 +91,9 @@ nav {
     
     .nav-toggle {
         display: block;     /* 햄버거 메뉴 보이게 하자 */
+        cursor: pointer;    /* 마우스 포인터: 손모양 */
+    }
+    .show-menu {
+        height: 141px;
     }
 }
