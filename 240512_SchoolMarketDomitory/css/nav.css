@@ -70,7 +70,7 @@ nav {
     }
     .nav-list {
         position: absolute; /* .nav-list 위치를 navbar 아래에 위치 */
-        top: 44px;
+        top: calc(44px - 141px);    /* 바로 나올 수 있도록 계산 */
         right: 0;
         left: 0;
         flex-direction: column; /* flex 방향 세로로 */
@@ -78,7 +78,9 @@ nav {
         /* row-gap: 20px; */
         background-color:  hsla(200, 100%, 25%, 0.6);   /* 배경색 다른 것으로 칠해보자 */
         overflow: hidden;   /* 크기보다 크면 안 보이게 하자 */
-        height: 0;
+        /* height: 0; */
+        transition: 0.4s ease-in-out;   /* 움직이자 */
+        z-index: -10;                   /* 위로 겹치지 않게 하자 */
     }
     .nav-item {
         padding: 0.5rem 1rem;   /* 위 오 아 왼 */
@@ -94,6 +96,7 @@ nav {
         cursor: pointer;    /* 마우스 포인터: 손모양 */
     }
     .show-menu {
-        height: 141px;
+        /* height: 141px; */
+        top: 44px;
     }
 }
