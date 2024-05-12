@@ -31,7 +31,7 @@ body {
 }
 
 header {
-    position: absolute;
+    position: fixed;    /* 스크롤 해도 고정 */
     top: 0;
     right: 0;
     left: 0;
@@ -44,8 +44,8 @@ nav {
     display: flex;      /* 기본값: 수평방향 */
     justify-content: space-between;   /* 양쪽 정렬 */
     align-items: center;   /* 교차축 가운데 */
-    padding: 0 40px;
-    color: #fff;
+    padding: 0 40px;        /* 왼쪽, 오른쪽만 여백 */
+    color: #fff;        /* 글자색 하얗게 */
     font-size: var(--h2-font-size);
 }
 .nav.container a {
@@ -56,9 +56,38 @@ nav {
 }
 .nav-list {
     display: flex;
-    column-gap: 40px;
-    font-weight: var(--font-bold);
+    column-gap: 40px;       /* 열과 열 사이 간격 */ 
 }
 .nav-toggle {
-    display: none;
+    display: none;      /* 햄버거 메뉴 안 보이게 하자 */
+    font-size: 28px;    /* 아이콘 조금 크게 하자 */
+}
+
+@media screen and (max-width: 600px) {
+    .nav.container {
+        padding: 0 20px;    /* 왼쪽, 오른쪽만 여백 좀 줄이자 */
+    }
+    .nav-list {
+        position: absolute; /* .nav-list 위치를 navbar 아래에 위치 */
+        top: 44px;
+        right: 0;
+        left: 0;
+        flex-direction: column; /* flex 방향 세로로 */
+        /* align-items: center;    교차축으로 가운데 정렬(가로로 가운데) */
+        /* row-gap: 20px; */
+        background-color:  hsla(200, 100%, 25%, 0.6);   /* 배경색 다른 것으로 칠해보자 */
+        overflow: hidden;   /* 크기보다 크면 안 보이게 하자 */
+    }
+    .nav-item {
+        padding: 0.5rem 1rem;   /* 위 오 아 왼 */
+        border-bottom: 1px solid white;     /* 메뉴의 아래에 선을 긋자(각 링크의 구분을 위해) */
+        text-align: center; /* 글자 가운데로 하자 */
+    }
+    .nav-link {
+        display: block;     /* 링크의 너비를 콘텐츠 -> 너비 100%로 늘리자 */
+    }
+    
+    .nav-toggle {
+        display: block;     /* 햄버거 메뉴 보이게 하자 */
+    }
 }
