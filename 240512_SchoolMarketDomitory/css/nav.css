@@ -23,3 +23,42 @@
     /* z-index */
     --z-index: 100;
 }
+
+/* nav */
+body {
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+nav {
+    height: 2.75rem;    /* 크롬 > 설정 > 글자 크기: 중간일 때, 44px */
+    background-color: var(--primary-color);
+}
+.nav.container {
+    display: flex;      /* 기본값: 수평방향 */
+    justify-content: space-between;   /* 양쪽 정렬 */
+    align-items: center;   /* 교차축 가운데 */
+    padding: 0 40px;
+    color: #fff;
+    font-size: var(--h2-font-size);
+}
+.nav.container a {
+    color: #fff;
+}
+.nav-logo {
+    font-size: var(--h2-font-size);
+}
+.nav-list {
+    display: flex;
+    column-gap: 40px;
+    font-weight: var(--font-bold);
+}
+.nav-toggle {
+    display: none;
+}
