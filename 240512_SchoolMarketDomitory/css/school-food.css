@@ -16,7 +16,6 @@
     font-size: var(--h1-font-size);
     background-color: transparent;
     border: none;
-    transform: translateY(-4px);
     cursor: pointer;
 }
 .menu-container {
@@ -60,4 +59,22 @@
     .school-food-menu {
         min-width: 100%;
     } 
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .menu-food:nth-child(odd) {
+        text-align: left;
+    }
+    .menu-food:nth-child(even) {
+        text-align: right;
+    }
+    .menu-food {
+        width: 50%;
+    }
+    
 }
