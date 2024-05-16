@@ -24,9 +24,9 @@ const setSchoolFoodMenu = (data) => {
     let breakfastMenuUl = document.getElementsByClassName("breakfast menu")[0];
     let lunchMenuUl = document.getElementsByClassName("lunch menu")[0];
     let dinnerMenuUl = document.getElementsByClassName("menu dinner")[0];
-    breakfastMenuUl.innerHTML = "<li>급식메뉴를 불러오지 못했습니다.</li>";
-    lunchMenuUl.innerHTML = "<li>급식메뉴를 불러오지 못했습니다.</li>";
-    dinnerMenuUl.innerHTML = "<li>급식메뉴를 불러오지 못했습니다.</li>";
+    breakfastMenuUl.innerHTML = "<li style='width: 100%;'>급식메뉴를 불러오지 못했습니다.</li>";
+    lunchMenuUl.innerHTML = "<li style='width: 100%;'>급식메뉴를 불러오지 못했습니다.</li>";
+    dinnerMenuUl.innerHTML = "<li style='width: 100%;'>급식메뉴를 불러오지 못했습니다.</li>";
 
     if(data.mealServiceDietInfo) {
         const menuData = data.mealServiceDietInfo[1].row;
@@ -35,15 +35,15 @@ const setSchoolFoodMenu = (data) => {
         menuData.forEach((menuRow) => {
             let cleanedMenu = menuRow.DDISH_NM.replace(/\([^)]*\)/g, "");   //(...) 삭제
             cleanedMenu = cleanedMenu.replace(/\./g, "");       // . 삭제
-            // console.log(cleanedMenu)
-            let cleanedMenuArray = cleanedMenu.split("<br/>");
-            cleanedMenuArray = cleanedMenuArray.map((element) => element.trim());
+            let cleanedMenuArray = cleanedMenu.split("<br/>");  //<br/>를 기준으로 나눠서, 각 메뉴 음식 하나씩 구하자
+            cleanedMenuArray = cleanedMenuArray.map((element) => element.trim());   // 메뉴음식 좌우 여백 삭제
+            
             // array -> <li class="menu-food">차조밥</li>
             let menuFoodLi = "";
             cleanedMenuArray.forEach((menuFood) => {
                 menuFoodLi += `<li class="menu-food">${menuFood}</li>\n`;
             });
-            // console.log(menuFoodLi);
+
             if (menuRow.MMEAL_SC_NM === "조식") {
                 breakfastMenuUl.innerHTML = menuFoodLi;
             } else if (menuRow.MMEAL_SC_NM === "중식") {
@@ -63,4 +63,5 @@ const getSchoolFoodMenu = (dateData) => {
             setSchoolFoodMenu(data);
         });
 };
-displayDate();
+displayDate();  /* 제목 표시 */
+changeDate(0);  /* 급식 메뉴 표시 */

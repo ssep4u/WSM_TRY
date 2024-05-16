@@ -1,12 +1,12 @@
-#school-food {
-    flex-direction: column;
+#school-food {  /* 급식 메뉴 main */
     display: flex;
+    flex-direction: column; /* .button-container, .menu-container를 세로로 배치 */
     align-items: center;
-    margin-top: calc(var(--nav-height) + 100px);
+    margin-top: calc(var(--nav-height) + 100px);    /* nav 아래 100px 아래 배치 */
 }
 .button-container {
-    display: flex;
-    align-items: flex-end;
+    display: flex;          /* 이전버튼, 요일(월/일), 다음버튼 가로로 배치 */
+    align-items: center;
     column-gap: 20px;
     font-size: var(--h1-font-size);
     margin-bottom: 40px;
@@ -14,27 +14,26 @@
 .prev-date,
 .next-date {
     font-size: var(--h1-font-size);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    background-color: transparent;  /* 버튼 배경색 삭제 */
+    border: none;                   /* 버튼 외곽선 삭제 */
+    cursor: pointer;                /* 클릭 가능하도록 손가락 모양으로 커서 변경 */
 }
 .menu-container {
     width: 100%;
     padding: 0 100px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    column-gap: 80px;
-    row-gap: 40px;
+    column-gap: 80px;               /* 열 사이 간격 */
+    row-gap: 40px;                  /* 행 사이 간격 */
 }
 .school-food-menu {
     /* min-width: 200px; */
-    max-width: 300px;
+    max-width: 300px;               /* 최대 너비 */
     padding: 20px;
-    flex: 1 0 200px;
-    border: 1px solid rgba(0, 0, 0, .25);
-    border-radius: 16px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    flex: 1 0 200px;                /* flex-grow(확대): 1, flex-shirink(축소): 0, flex-basis(기본크기): 200px */
+    border: 1px solid rgba(0, 0, 0, .25);   /* 급식 메뉴 카드 외곽선 */
+    border-radius: 16px;                      /* 급식 메뉴 카드 둥근사각형 */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* 급식 메뉴 카드 그림자 */
 }
 
 .school-food-menu > .title {
@@ -48,33 +47,33 @@
 }
 
 /* tablet */
-@media screen and (max-width: 960px) {
+/* @media screen and (max-width: 960px) { */
+@media screen and (max-width: calc(200px * 3 + 80px * 2 + 100px * 2)) {
     #school-food {
-        margin-top: calc(var(--nav-height) + 40px);
+        margin-top: calc(var(--nav-height) + 40px);     /* nav 아래 40px 아래 배치 */
     }
+
     .menu-container {
-        flex-direction: column;
+        flex-direction: column;     /* 급식 메뉴 카드 세로로 배치 */
         align-items: center;
     }   
     .school-food-menu {
-        min-width: 100%;
+        min-width: 100%;            /* 최소 너비 지정하지 않으면 너무 작음 */
     } 
     .menu {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 300px;
-        margin: 0 auto;
+        flex-wrap: wrap;    /* 각 메뉴 음식은 <li> 태그로 구분하고 내려쓰기(양쪽에 두개씩 배치하기 위함) */
+        max-width: 400px;   /* 각 메뉴가 양쪽정렬해도 너무 벌어지지 않도록 하자 */
+        margin: 0 auto;     /* 가운데 정렬 */
     }
 
+    .menu-food {
+        width: 50%;         /* 메뉴음식들이 한 행에 두개가 나오도록 하자*/
+    }
     .menu-food:nth-child(odd) {
-        text-align: left;
+        text-align: left;   /* 홀수 메뉴음식은 왼쪽 정렬 */
     }
     .menu-food:nth-child(even) {
-        text-align: right;
+        text-align: right;  /* 짝수 메뉴음식은 오른쪽 정렬 */
     }
-    .menu-food {
-        width: 50%;
-    }
-    
 }
