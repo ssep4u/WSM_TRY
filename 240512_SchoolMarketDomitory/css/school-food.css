@@ -52,6 +52,9 @@
     #school-food {
         margin-top: calc(var(--nav-height) + 40px);     /* nav 아래 40px 아래 배치 */
     }
+    .school-food-menu {
+        flex-basis: 150px;          /* "급식 메뉴를 불러오지 못했습니다." 아래 여백이 큰 것 방지 200px -> 100px */
+    }
 
     .menu-container {
         flex-direction: column;     /* 급식 메뉴 카드 세로로 배치 */

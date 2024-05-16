@@ -76,14 +76,12 @@ nav {
         right: 0;
         left: 0;
         flex-direction: column; /* flex 방향 세로로 */
-        /* align-items: center;    교차축으로 가운데 정렬(가로로 가운데) */
-        /* row-gap: 20px; */
         background-color:  hsla(200, 100%, 25%, 0.8);   /* 배경색 다른 것으로 칠해보자 */
         overflow: hidden;   /* 크기보다 크면 안 보이게 하자 */
         /* height: 0; */
         transition: 0.4s ease-in-out;   /* 움직이자 */
         z-index: -10;                   /* 위로 겹치지 않게 하자 */
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);     /* 배경 흐리게 하자 */
     }
     .nav-item {
         padding: 0.5rem 1rem;   /* 위 오 아 왼 */
