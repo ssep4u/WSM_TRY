@@ -8,7 +8,7 @@ const displayDate = () => {
     let day = currentDate.getDay(); //요일
     days = days.split("");  //"일월화수목금토" -> ['일', '월', '화', '수', '목', '금', '토']
     const schoolFoodTitleHeader = document.getElementsByClassName("school-food-title")[0];
-    const titleText = `🍚 ${days[currentDate.getDay()]}요일(${month}/${date})의 메뉴 🍚`;
+    const titleText = `🍚 ${days[day]}요일(${month}/${date})의 메뉴 🍚`;
     schoolFoodTitleHeader.innerText = titleText;
 };
 
