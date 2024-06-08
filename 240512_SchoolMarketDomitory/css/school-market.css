@@ -9,7 +9,7 @@
     font-size: var(--h2-font-size);
     margin-bottom: 40px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     background-color: #dcdcdc;
     min-width: 400px;
@@ -38,7 +38,7 @@
     /* width: 100%; */
     padding: 0 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* 하나 내려쓸 때 가운데 정렬되는 문제 해결 */
     flex-wrap: wrap; /* 내려쓰기 */
     gap: 40px; /* 열, 행 사이 간격 */
   }
