@@ -42,7 +42,33 @@
     flex-wrap: wrap; /* 내려쓰기 */
     gap: 40px; /* 열, 행 사이 간격 */
   }
-
+  .product-card {
+    position: relative;       /* name의 위치 조정을 위하여 기준 설정 */
+    font-size: var(--h2-font-size);
+    background-color: #ededed;
+    padding: 30px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;   /* image와 name 수직 배치 */
+    align-items: center;      /* 수직이 메인축이므로, 교차축인 수평으로 가운데 정렬 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .product-card > .image {
+    /* width: 200px; */
+    height: 200px;
+    aspect-ratio: 1/1;
+    object-fit: contain;  /* 그림 전부 나오게 조정 */
+    border-radius: 10px;
+  }
+  .product-card > .name {
+    background-color: #dcdcdc;
+    padding: 4px 30px;
+    border-radius: 19px;
+    text-align: center; /* 글자 가운데 정렬 */
+    position: absolute;   /* 위치 조정. 부모가 relative여야 그 기준으로 배치 됨 */
+    bottom: -19px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
   
   /* tablet */
   /* @media screen and (max-width: 960px) { */
@@ -50,4 +76,19 @@
     #school-market {
       margin-top: calc(var(--nav-height) + 40px); /* nav 아래 40px 아래 배치 */
     }
-}
+    .product-card {
+      font-size: var(--h3-font-size);
+      padding: 20px;
+      border-radius: 30px;
+    }
+    .product-card > .image {
+      /* width: 300px; */
+      height: 150px;
+      aspect-ratio: 2/1;
+      object-fit: contain;
+    }
+    .product-card > .name {
+      border-radius: 16px;
+      bottom: -16px;
+    }
+  }
