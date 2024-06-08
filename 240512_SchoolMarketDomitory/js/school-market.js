@@ -1,4 +1,4 @@
-
+let allData;
 const getProductCardArticle = (product) => `
     <article class="product-card">
       <img src="images/${product["image"]}" alt="${product['name']} 사진" class="image">
@@ -13,14 +13,22 @@ const showData = ((data) => {
     });
     productContainerSection.innerHTML = productsString;
 });
-
+const setData = ((data) => {
+    allData = data;
+    showData(data);
+});
+const searchData = ((query) => {
+    let data = [];
+    data = allData.filter((oneData) => oneData["name"].includes(query) || oneData["category"].includes(query));
+    showData(data);
+});
 
 const getData = (() => {
     // data 가져오자
     const url = "js/data.json";
     fetch(url)
         .then((response) => response.json())
-        .then((data) => showData(data))
+        .then((data) => setData(data))
         .catch((error) => console.error(error));
 });
 getData();
