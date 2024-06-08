@@ -1,27 +1,53 @@
-#school-market {  /* 매점 main */
+#school-market {
+    /* 매점 main */
     display: flex;
     flex-direction: column; /* .search-container, .product-container를 세로로 배치 */
     align-items: center;
-    margin-top: calc(var(--nav-height) + 100px);    /* nav 아래 100px 아래 배치 */
-}
-.search-container {
-    font-size: var(--h1-font-size);
+    margin-top: calc(var(--nav-height) + 100px); /* nav 아래 100px 아래 배치 */
+  }
+  .search-container {
+    font-size: var(--h2-font-size);
     margin-bottom: 40px;
-}
-
-.product-container {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dcdcdc;
+    min-width: 400px;
+    width: 90%;
+    max-width: 600px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .search-bar {
+    font-size: var(--h2-font-size);
+    flex-grow: 1; /* 공간이 늘릴 수 있으면 쭉 늘리자 */
+    border: none; /* input창 디자인 reset */
+    background: none; /* input창 디자인 reset */
+    padding: 10px;
+  }
+  .search-bar:focus {
+    outline: none; /* 클릭했을 때, 아무 표시 하지 말자 */
+  }
+  .search-container > i {
+    cursor: pointer;
+    margin-top: 4px; /* 돋보기 가운데로 보이게 하자 */
+  }
+  
+  .product-container {
+    /* width: 100%; */
     padding: 0 100px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;        /* 내려쓰기 */
-    gap: 40px;               /* 열, 행 사이 간격 */
-}
+    flex-wrap: wrap; /* 내려쓰기 */
+    gap: 40px; /* 열, 행 사이 간격 */
+  }
 
-/* tablet */
-/* @media screen and (max-width: 960px) { */
-@media screen and (max-width: calc(200px * 3 + 80px * 2 + 100px * 2)) {
+  
+  /* tablet */
+  /* @media screen and (max-width: 960px) { */
+  @media screen and (max-width: 600px) {
     #school-market {
-        margin-top: calc(var(--nav-height) + 40px);     /* nav 아래 40px 아래 배치 */
+      margin-top: calc(var(--nav-height) + 40px); /* nav 아래 40px 아래 배치 */
     }
 }
