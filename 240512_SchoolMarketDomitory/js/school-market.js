@@ -4,7 +4,7 @@ const getProductCardArticle = (product) => `
       <img src="images/${product["image"]}" alt="${product['name']} 사진" class="image">
       <div class="name">${product["name"]}</div>
     </article>
-    `;
+`;
 const showData = ((data) => {
     const productContainerSection = document.getElementsByClassName("product-container")[0];
     let productsString = "";
