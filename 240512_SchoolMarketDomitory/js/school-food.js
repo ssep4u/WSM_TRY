@@ -13,9 +13,15 @@ const displayDate = () => {
 };
 
 // 이전, 다음 버튼 눌러 날짜 바꾸자
-const changeDate = (diff) => {
+const changeDate = (diff=0) => {
     currentDate.setDate(currentDate.getDate() + diff);
-    const dateData = currentDate.toISOString().slice(0, 10).replace(/-/g, "");  //2024-05-15 -> 20240515
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth() + 1;
+    let monthString = month.toString().padStart(2, '0');
+    let date = currentDate.getDate();
+    let dateString = date.toString().padStart(2, '0');
+    const dateData = `${year}${monthString}${dateString}`  //2024-05-15 -> 20240515
+    // const dateData = currentDate.toISOString().slice(0, 10).replace(/-/g, "");
     getSchoolFoodMenu(dateData);
     displayDate();
 };
@@ -37,7 +43,6 @@ const getSchoolFoodMenu = (dateData) => {
 
 // 급식 메뉴 가져온 data 화면에 표시하자
 const setSchoolFoodMenu = (data) => {
-    // console.log(data);
     //메뉴 clear
     let breakfastMenuUl = document.getElementsByClassName("breakfast menu")[0];
     let lunchMenuUl = document.getElementsByClassName("lunch menu")[0];
@@ -48,7 +53,6 @@ const setSchoolFoodMenu = (data) => {
 
     if (data.mealServiceDietInfo) {
         const menuData = data.mealServiceDietInfo[1].row;
-        // console.log(menuData);
 
         menuData.forEach((menuRow) => {
             let cleanedMenu = menuRow.DDISH_NM.replace(/\([^)]*\)/g, "");   //(...) 삭제
@@ -73,5 +77,5 @@ const setSchoolFoodMenu = (data) => {
     }
 };
 
-displayDate();  /* 제목 표시 */
+// displayDate();  /* 제목 표시 */
 changeDate(0);  /* 급식 메뉴 표시 */
