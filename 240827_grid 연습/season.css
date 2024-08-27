@@ -1,0 +1,11 @@
+.container {
+    width: 800px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.item {
+    border: 1px solid black;
+    display: grid;
+    place-items: center;
+}
