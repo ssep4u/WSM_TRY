@@ -16,9 +16,11 @@
 }
 nav {
     height: 44px;
+    background-color: green;
 }
 .side1 {
     grid-area: side_left;
+    background-color: beige;
 }
 main {
     grid-area: main;
@@ -31,7 +33,9 @@ figure img {
 }
 .side2 {
     grid-area: side_right;
+    background-color: beige;
 }
 footer {
     grid-area: footer;
+    background-color: deepskyblue;
 }
