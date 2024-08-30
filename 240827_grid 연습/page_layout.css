@@ -1,0 +1,37 @@
+.container * {
+    border: 1px solid gray;
+}
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr 100px;
+    grid-template-rows: 44px 1fr 80px;
+    grid-template-areas: 
+    "header header  header"
+    "side_left  main    side_right"
+    "footer footer footer";
+}
+.header {
+    grid-area: header;
+}
+nav {
+    height: 44px;
+}
+.side1 {
+    grid-area: side_left;
+}
+main {
+    grid-area: main;
+}
+figure img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.side2 {
+    grid-area: side_right;
+}
+footer {
+    grid-area: footer;
+}
