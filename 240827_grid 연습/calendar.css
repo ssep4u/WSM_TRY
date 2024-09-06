@@ -1,0 +1,30 @@
+main {
+    width: 800px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#calendar-container {
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+#calendar-container {
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+.week-name {
+    color: #aaa;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+.item {
+    display: grid;
+    place-items: center;
+}
