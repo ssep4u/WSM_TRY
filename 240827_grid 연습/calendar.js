@@ -47,26 +47,28 @@ const setCalendar = (date) => {
 
   // 이전 달 뒷 날짜 만들자: 이번 달 1일의 요일 전까지 만들자
   const prevMonthLastDate = new Date(year, month, 0).getDate();
-  for (let i = 0; i < firstDay; i++) {
+  //이전 달 마지막 날짜 - 이번 달 1일 요일 + 1 ~ 이전 달 마지막 날짜
+  for (let date = prevMonthLastDate - firstDay + 1; date <= prevMonthLastDate; date++) {
     let prevMonthDateDiv = document.createElement("div");
-    prevMonthDateDiv.textContent = prevMonthLastDate - firstDay + i + 1;
+    prevMonthDateDiv.textContent = date;
     prevMonthDateDiv.className = "item other-month";
     calendarContainerDiv.appendChild(prevMonthDateDiv);
   }
 
   //이번 달 날짜 만들자
-  for (let i = currentDate; i < lastDate.getDate(); i++) {
+  for (let date = currentDate; date <= lastDate.getDate(); date++) {
     let currentMonthDateDiv = document.createElement("div");
-    currentMonthDateDiv.textContent = i;
+    currentMonthDateDiv.textContent = date;
     currentMonthDateDiv.className = "item";
     // currentMonthDateDiv.onclick = (event) => console.log(year, month, event.target.textContent);
     calendarContainerDiv.appendChild(currentMonthDateDiv);
   }
 
   //다음 달 앞 날짜 만들자
-  for (let i = lastDay; i <= 6; i++) {
+  //1 ~ 6 - 이번 달의 마지막 날자의 요일
+  for (let date = 1; date <= 6 - lastDay; date++) {
     let nextMonthDateDiv = document.createElement("div");
-    nextMonthDateDiv.textContent = i - lastDay + 1;
+    nextMonthDateDiv.textContent = date;
     nextMonthDateDiv.className = "item other-month";
     calendarContainerDiv.appendChild(nextMonthDateDiv);
   }
