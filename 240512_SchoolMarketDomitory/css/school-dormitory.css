@@ -1,0 +1,41 @@
+main {
+    margin-top: calc(var(--nav-height) + 100px);
+    font-size: var(--h2-font-size);
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    margin-bottom: 10px;
+}
+#calendar-container {
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ddd;
+}
+.item {
+    display: grid;
+    place-items: center;
+}
+.item:nth-child(7n+1) {
+    color:crimson;
+}
+.item:nth-child(7n+7) {
+    color: blue;
+}
+.week-name {
+    color: #aaa;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+.other-month {
+    color: #ddd !important;
+}
+.other-month:hover {
+    background-color: #eee;
+}
