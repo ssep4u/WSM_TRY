@@ -32,41 +32,43 @@ const setCalendar = (date) => {
   const firstDate = new Date(year, month, 1);
   const firstDay = firstDate.getDay();
   const lastDate = new Date(year, month + 1, 0);
+  const lastDay = lastDate.getDay();
 
   //달력 요일 만들자
-  const calendarContainer = document.querySelector("#calendar-container");
+  const calendarContainerDiv = document.querySelector("#calendar-container");
   const weekNames = "일월화수목금토".split(""); //const weekNames = ["일", "월", "화", "수", "목", "금", "토"];
   let weekNamesString = "";
   weekNames.forEach((weekName) => {
     weekNamesString += `<div class="item week-name">${weekName}</div>`;
   });
-  calendarContainer.innerHTML = weekNamesString;
+  calendarContainerDiv.innerHTML = weekNamesString;
 
   let currentDate = 1;
 
   // 이전 달 뒷 날짜 만들자: 이번 달 1일의 요일 전까지 만들자
+  const prevMonthLastDate = new Date(year, month, 0).getDate();
   for (let i = 0; i < firstDay; i++) {
-    let prevMonthDate = document.createElement("div");
-    prevMonthDate.textContent =
-      new Date(year, month, 0).getDate() - firstDate.getDay() + i + 1;
-    prevMonthDate.className = "item other-month";
-    calendarContainer.appendChild(prevMonthDate);
+    let prevMonthDateDiv = document.createElement("div");
+    prevMonthDateDiv.textContent = prevMonthLastDate - firstDay + i + 1;
+    prevMonthDateDiv.className = "item other-month";
+    calendarContainerDiv.appendChild(prevMonthDateDiv);
   }
 
   //이번 달 날짜 만들자
   for (let i = currentDate; i < lastDate.getDate(); i++) {
-    let currentMonthDate = document.createElement("div");
-    currentMonthDate.textContent = i;
-    currentMonthDate.className = "item";
-    calendarContainer.appendChild(currentMonthDate);
+    let currentMonthDateDiv = document.createElement("div");
+    currentMonthDateDiv.textContent = i;
+    currentMonthDateDiv.className = "item";
+    // currentMonthDateDiv.onclick = (event) => console.log(year, month, event.target.textContent);
+    calendarContainerDiv.appendChild(currentMonthDateDiv);
   }
 
   //다음 달 앞 날짜 만들자
-  for (let i = lastDate.getDay(); i <= 6; i++) {
-    let nextMonthDate = document.createElement("div");
-    nextMonthDate.textContent = i - lastDate.getDay() + 1;
-    nextMonthDate.className = "item other-month";
-    calendarContainer.appendChild(nextMonthDate);
+  for (let i = lastDay; i <= 6; i++) {
+    let nextMonthDateDiv = document.createElement("div");
+    nextMonthDateDiv.textContent = i - lastDay + 1;
+    nextMonthDateDiv.className = "item other-month";
+    calendarContainerDiv.appendChild(nextMonthDateDiv);
   }
 }
 
