@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,20 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/school-dormitory.css">
 </head>
+
 <body>
     <header>
         <nav class="nav container">
             <a href="index.html" class="nav-logo">
                 <i class="bi bi-backpack3"></i>
             </a>
-            
+
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.html" class="nav-link">학교</a></li>
                 <li class="nav-item"><a href="school-market.html" class="nav-link">매점</a></li>
                 <li class="nav-item"><a href="school-dormitory.html" class="nav-link">기숙사</a></li>
             </ul>
-            
+
             <div class="nav-toggle" id="nav_toggle">
                 <i class="bi bi-list"></i>
             </div>
@@ -29,17 +31,38 @@
     </header>
 
     <main id="dormitory">
-        <div id="calendar-header">
-            <button id="prev-month">이전</button>
-            <h1></h1>
-            <button id="next-month">다음</button>
+        <h1>세탁기 예약하기</h1>
+        <div id="menu-container">
+            <div class="menu-item" onclick="setPage(1)">요일 지정</div>
+            <div class="menu-item" onclick="setPage(2)">시간 선택</div>
+            <div class="menu-item" onclick="setPage(3)">호실 이름</div>
         </div>
-        <div id="calendar-container">
+        <div id="dormitory-select-date">
+            <!-- 요일 지정 -->
+            <div id="calendar">
+                <div id="calendar-header">
+                    <button id="prev-month">이전</button>
+                    <h2></h2>
+                    <button id="next-month">다음</button>
+                </div>
+                <div id="calendar-container">
+                </div>
+            </div>
         </div>
+        <div id="dormitory-board">
+            <!-- 세탁기, 시간 선택 -->
+
+        </div>
+        <div id="dormitory-select-user">
+            <!-- 호실, 이름 -->
+
+        </div>
+        <!-- 이름, 호실, 시간, 세탁기, 알림받기 -->
     </main>
 
     <!-- JavaScript -->
     <script src="js/nav.js"></script>
     <script src="js/school-dormitory.js"></script>
 </body>
+
 </html>

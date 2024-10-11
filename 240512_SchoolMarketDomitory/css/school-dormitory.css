@@ -2,6 +2,36 @@ main {
     margin-top: calc(var(--nav-height) + 100px);
     font-size: var(--h2-font-size);
 }
+h1 {
+    text-align: center;
+}
+
+#dormitory {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+#dormitory #menu-container {
+    width: 400px;
+    padding: 5px 10px;
+    margin: 0 auto;
+    font-size: var(--h2-font-size);
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+    background-color: #A0D49C;
+    border-radius: 40px;
+}
+
+.menu-item {
+    padding: 5px 15px;
+    border-radius: 40px;
+}
+.menu-item:hover,
+.select-menu {
+    background-color: white;
+    cursor: pointer;
+}
 
 #calendar-header {
     display: flex;
@@ -22,20 +52,20 @@ main {
     display: grid;
     place-items: center;
 }
-.item:nth-child(7n+1) {
+#calendar .item:nth-child(7n+1) {
     color:crimson;
 }
-.item:nth-child(7n+7) {
+#calendar .item:nth-child(7n+7) {
     color: blue;
 }
-.week-name {
+#calendar .week-name {
     color: #aaa;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
 }
-.other-month {
+#calendar .other-month {
     color: #ddd !important;
 }
-.other-month:hover {
+#calendar .other-month:hover {
     background-color: #eee;
 }
