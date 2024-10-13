@@ -62,6 +62,7 @@ const setCalendar = (date) => {
     currentMonthDate.className = "item";
     currentMonthDate.dataset.date = `${year}-${month+1}-${date}`;
     currentMonthDate.textContent = date;
+    currentMonthDate.onclick = (event) => clickDate(event);
     calendarContainer.appendChild(currentMonthDate);
   }
 
@@ -76,7 +77,7 @@ const setCalendar = (date) => {
 }
 const setPage = (page) => {
   page--;
-  const pages = ["dormitory-select-date", "dormitory-select-user", "dormitory-board"];
+  const pages = ["dormitory-select-date", "dormitory-select-washing-machine-time", "dormitory-select-user", "dormitory-board"];
   const menuContainerDiv = document.getElementById("menu-container");
 
   //메뉴 선택 clear
@@ -84,8 +85,7 @@ const setPage = (page) => {
     menuItemDiv.classList.remove("select-menu");
   }
   //메뉴 선택 one
-  menuContainerDiv.children[page].classList.add("select-menu");
-
+  if (menuContainerDiv.children[page]!==undefined) menuContainerDiv.children[page].classList.add("select-menu");
 
   //display: none;
   //all page none
@@ -96,6 +96,10 @@ const setPage = (page) => {
   //page one
   let pageDiv = document.getElementById(pages[page]);
   pageDiv.style.display = "block";
+}
+const clickDate = (dateDiv) => {
+  // console.log(dateDiv.target.dataset.date); //<div data-date=""> -> div.dataset.date
+  setPage(2);
 }
 
 setPage(1);
