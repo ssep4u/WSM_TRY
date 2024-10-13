@@ -48,16 +48,104 @@
                 <div id="calendar-container">
                 </div>
             </div>
+            <button class="btn" onclick="setPage(2)">다음</button>
         </div>
-        <div id="dormitory-board">
-            <!-- 세탁기, 시간 선택 -->
-
+        <div id="dormitory-select-washing-machine-time">
+            <div class="flex-container">
+                <!-- 세탁기, 시간 선택 -->
+                <div class="washing-machine-selection">
+                    <select id="washing-machine" name="washing-machine">
+                        <option value="1">1번 세탁기</option>
+                        <option value="2">2번 세탁기</option>
+                        <option value="3">3번 세탁기</option>
+                    </select>
+                </div>
+                <div class="time-selection">
+                    <select id="time" name="time">
+                        <option value="7:00-8:10">7시 ~ 8시 10분</option>
+                        <option value="8:10-9:20">8시 10분 ~ 9시 20분</option>
+                        <option value="9:20-10:30">9시 20분 ~ 10시 30분</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" onclick="setPage(3)">다음</button>
         </div>
         <div id="dormitory-select-user">
-            <!-- 호실, 이름 -->
-
+            <div class="flex-container">
+                <!-- 호실, 이름 -->
+                <div class="room-selection selection">
+                    <select id="room" name="room">
+                        <option value="501">501호</option>
+                        <option value="502">502호</option>
+                    </select>
+                </div>
+                <div class="name-input selection">
+                    <input type="text" id="name" name="name">
+                </div>
+            </div>
+            <button class="btn" onclick="setPage(4)">다음</button>
         </div>
-        <!-- 이름, 호실, 시간, 세탁기, 알림받기 -->
+        <div id="dormitory-board">
+            <!-- 이름, 호실, 시간, 세탁기, 알림받기 -->
+            <div class="board-container">
+                <div class="item board-item header">이름</div>
+                <div class="item board-item header">호실</div>
+                <div class="item board-item header">시간</div>
+                <div class="item board-item header">세탁기</div>
+                <div class="item board-item header">알림</div>
+                <div class="item board-item">김서연</div>
+                <div class="item board-item">501호</div>
+                <div class="item board-item">9시 20분 ~ 10시 30분</div>
+                <div class="item board-item">3번 세탁기</div>
+                <div class="item board-item">🔔</div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+                <div class="item board-item"></div>
+            </div>
+            <button class="btn" onclick="alert('예약완료')">예약완료</button>
+        </div>
     </main>
 
     <!-- JavaScript -->

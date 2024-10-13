@@ -1,6 +1,8 @@
 main {
-    margin-top: calc(var(--nav-height) + 100px);
+    margin: 0 auto; /* 수평 가운데 */
+    margin-top: calc(var(--nav-height) + 56px);    /* nav 56px 아래 */
     font-size: var(--h2-font-size);
+    width: min(100%, 600px);    /* 최소 100%, 최대 600px */
 }
 h1 {
     text-align: center;
@@ -9,7 +11,9 @@ h1 {
 #dormitory {
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+}
+#dormitory h1 {
+    margin-bottom: 56px;
 }
 #dormitory #menu-container {
     width: 400px;
@@ -21,6 +25,7 @@ h1 {
     column-gap: 40px;
     background-color: #A0D49C;
     border-radius: 40px;
+    margin-bottom: 100px;
 }
 
 .menu-item {
@@ -32,6 +37,11 @@ h1 {
     background-color: white;
     cursor: pointer;
 }
+#menu-container,
+.select-menu,
+.menu-item:hover {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 25%);
+}
 
 #calendar-header {
     display: flex;
@@ -41,7 +51,7 @@ h1 {
     margin-bottom: 10px;
 }
 #calendar-container {
-    width: 600px;
+    width: 100%;
     height: 400px;
     margin: 0 auto;
     display: grid;
@@ -68,4 +78,38 @@ h1 {
 }
 #calendar .other-month:hover {
     background-color: #eee;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+}
+#dormitory select,
+#dormitory input {
+    font-size: var(--h2-font-size);
+    border: none;
+    border-radius: 30px;
+    padding: 15px 20px;
+    background-color: #f0f0f0;
+}
+
+.btn {
+    font-size: var(--h2-font-size);
+    padding: 10px 20px;
+    margin-top: 20px;
+    float: right;
+}
+
+.board-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 2fr 1fr;
+}
+.board-item.header {
+    background-color: #eee;
+}
+.board-item {
+    border: 1px solid gray;
+    text-align: center;
+    height: 40px;
 }
