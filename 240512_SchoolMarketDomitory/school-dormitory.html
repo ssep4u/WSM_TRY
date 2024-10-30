@@ -33,12 +33,12 @@
     <main id="dormitory">
         <h1>세탁기 예약하기</h1>
         <div id="menu-container">
-            <div class="menu-item" onclick="setPage(1)">요일 지정</div>
+            <div class="menu-item" onclick="setPage(1)">날짜 지정</div>
             <div class="menu-item" onclick="setPage(2)">시간 선택</div>
             <div class="menu-item" onclick="setPage(3)">호실 이름</div>
         </div>
         <div id="dormitory-select-date">
-            <!-- 요일 지정 -->
+            <!-- 날짜 지정 -->
             <div id="calendar">
                 <div id="calendar-header">
                     <button id="prev-month">이전</button>
@@ -82,7 +82,7 @@
             <!-- 이름, 호실, 시간, 세탁기, 알림받기 -->
             <div class="board-container">
             </div>
-            <button class="btn" onclick="alert('예약완료')">예약완료</button>
+            <button class="btn" onclick="completedReservation()">예약완료</button>
         </div>
     </main>
 

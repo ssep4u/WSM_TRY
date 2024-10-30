@@ -4,6 +4,11 @@ const roomSelect = document.querySelector("#room");
 const nameInput = document.querySelector("#name");
 const boardContainerDiv = document.querySelector(".board-container");
 
+let allData;  //초기 설정할 데이터: 세탁기 번호, 시간, 호실
+let weeklyReservations; //미리 정해진 요일별 예약
+let reservations; //사용자가 예약할 정보들
+let newReservation; //사용자가 예약할 정보
+
 // 요일 별 세탁기 예약 사항 가져오자
 const initData = () => {
   const getAllData = async () => {
@@ -30,8 +35,8 @@ const initData = () => {
     //   .then(data => weeklyReservations = data)
     //   .catch(error => console.error(error));
   }
- getAllData();
- getWeeklyReservations();
+  getAllData();
+  getWeeklyReservations();
 }
 
 //달력
@@ -41,10 +46,7 @@ const initData = () => {
 //1일이 무슨 요일인지 구하자
 //이번 달 마지막 날짜 구하자
 let currentDate = new Date();
-let allData;  //초기 설정할 데이터: 세탁기 번호, 시간, 호실
-let weeklyReservations; //미리 정해진 요일별 예약
-let reservations = []; //사용자가 예약할 정보들
-let newReservation; //사용자가 예약할 정보
+
 //이전, 다음
 const prevMonth = document.getElementById("prev-month");
 prevMonth.addEventListener("click", () => changeMonth(-1));
@@ -117,6 +119,20 @@ const setPage = (page) => {
   const pages = ["dormitory-select-date", "dormitory-select-washingmachine-time", "dormitory-select-user", "dormitory-board"];
   const menuContainerDiv = document.getElementById("menu-container");
 
+  // 예약들 가져오자
+  const getReservations = () => {
+    const storedReservations = localStorage.getItem('reservations');
+    if (storedReservations) {
+      reservations = JSON.parse(storedReservations);
+    } else {
+      reservations = [];
+    }
+
+    // string -> Date()
+    reservations.map(reservation => reservation.date = new Date(reservation.date));
+  };
+  getReservations();
+
   //메뉴 선택 clear
   for (const menuItemDiv of menuContainerDiv.children) {
     menuItemDiv.classList.remove("select-menu");
@@ -149,13 +165,13 @@ const setPage = (page) => {
   } else if (page === 3) {  //호실, 이름
     newReservation.washingmachine = washingmachineSelect.value;
     newReservation.time = timeSelect.value;
-    
+
     initRoomName();
   } else if (page === 4) {  //세탁기 예약 현황표
     newReservation.room = roomSelect.value;
     newReservation.name = nameInput.value;
     reservations.push(newReservation);
-    
+
     initTable();
   }
 }
@@ -272,6 +288,10 @@ const initTable = () => {
     `;
   });
   boardContainerDiv.innerHTML = boardItemString;
+}
+const completedReservation = () => {
+  alert("예약 완료");
+  localStorage.setItem('reservations', JSON.stringify(reservations)); //예약들 저장하자
 }
 
 initData();
