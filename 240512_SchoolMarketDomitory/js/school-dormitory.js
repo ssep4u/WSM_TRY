@@ -5,7 +5,7 @@ const nameInput = document.querySelector("#name");
 const boardContainerDiv = document.querySelector(".board-container");
 
 // 요일 별 세탁기 예약 사항 가져오자
-const initData = async () => {
+const initData = () => {
   const getAllData = async () => {
     const url = "js/allData.json";
     try {
@@ -30,8 +30,8 @@ const initData = async () => {
     //   .then(data => weeklyReservations = data)
     //   .catch(error => console.error(error));
   }
-  await getAllData();
-  await getWeeklyReservations();
+ getAllData();
+ getWeeklyReservations();
 }
 
 //달력
@@ -210,6 +210,13 @@ const initWashingmachineTime = (newReservation) => {
   washingmachineSelect.innerHTML = "";
   let washingmachines;
   washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);
+
+  // 선택할 세탁기가 없다면, 경고창 띄우고, 다시 날짜 지정으로 가자
+  if (washingmachines.length === 0) {
+    alert("선택할 세탁기가 없습니다. 다시 날짜 지정으로 돌아갑니다.");
+    setPage(1);
+    return;
+  }
 
   washingmachines.forEach(washingmachine => {
     const newOption = document.createElement("option");
