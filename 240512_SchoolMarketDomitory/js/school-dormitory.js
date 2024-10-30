@@ -44,7 +44,7 @@ let currentDate = new Date();
 let allData;  //초기 설정할 데이터: 세탁기 번호, 시간, 호실
 let weeklyReservations; //미리 정해진 요일별 예약
 let reservations = []; //사용자가 예약할 정보들
-let reservation; //사용자가 예약할 정보
+let newReservation; //사용자가 예약할 정보
 //이전, 다음
 const prevMonth = document.getElementById("prev-month");
 prevMonth.addEventListener("click", () => changeMonth(-1));
@@ -136,7 +136,7 @@ const setPage = (page) => {
 
   //예약 초기화
   if (page === 1) {
-    reservation = {
+    newReservation = {
       "date": undefined,
       "washingmachine": undefined,
       "time": undefined,
@@ -145,33 +145,34 @@ const setPage = (page) => {
       "notification": true
     }
   } else if (page === 2) {  //세탁기, 시간 선택
-    initWashingmachineTime(reservation);
+    initWashingmachineTime(newReservation);
   } else if (page === 3) {  //호실, 이름
-    reservation.washingmachine = washingmachineSelect.options[washingmachineSelect.selectedIndex].value;
-    reservation.time = timeSelect.options[timeSelect.selectedIndex].value;
+    newReservation.washingmachine = washingmachineSelect.value;
+    newReservation.time = timeSelect.value;
+    
     initRoomName();
   } else if (page === 4) {  //세탁기 예약 현황표
-    reservation.room = roomSelect.options[roomSelect.selectedIndex].value;
-    reservation.name = nameInput.value;
-    reservations.push(reservation);
-
+    newReservation.room = roomSelect.value;
+    newReservation.name = nameInput.value;
+    reservations.push(newReservation);
+    
     initTable();
   }
 }
 
 const clickDate = (event) => {
   // console.log(dateDiv.target.dataset.date); //<div data-date=""> -> div.dataset.date
-  reservation.date = new Date(event.target.dataset.date);
+  newReservation.date = new Date(event.target.dataset.date);
   setPage(2);
 }
 
-const initWashingmachineTime = (reservation) => {
+const initWashingmachineTime = (newReservation) => {
   // 연월일의 요일 구하자
   const getDayOfWeek = (dateObject) => {
     const dayOfWeek = dateObject.getDay();
     return dayOfWeek;
   }
-  let weekday = getDayOfWeek(reservation.date);
+  let weekday = getDayOfWeek(newReservation.date);
 
   // 모든 가능한 세탁기 번호: 시간 배열 만들자
   let allWashingmachineTime = {};
@@ -193,7 +194,17 @@ const initWashingmachineTime = (reservation) => {
     }
   });
 
-  //TODO: 사용자가 예약한 정보 보고 예약된 세탁기 번호 없애자 
+  // 사용자가 예약한 정보 보고 예약된 세탁기, 시간 없애자
+  reservations.forEach((reservation) => {
+    if (reservation.date.getDate() === newReservation.date.getDate() && reservation.date.getMonth() === newReservation.date.getMonth() && reservation.date.getFullYear() === newReservation.date.getFullYear()) {
+      const washingmachine = reservation.washingmachine;
+      const time = reservation.time;
+      const index = allWashingmachineTime[washingmachine].indexOf(time);
+      if (index > -1) {
+        allWashingmachineTime[washingmachine].splice(index, 1);
+      }
+    }
+  });
 
   // #washingmachine에 옵션 추가하자
   washingmachineSelect.innerHTML = "";
@@ -208,13 +219,14 @@ const initWashingmachineTime = (reservation) => {
   });
   const initTime = () => {
     timeSelect.innerHTML = "";
-    const selectedWashingmachine = washingmachineSelect.options[washingmachineSelect.selectedIndex].value;
+    const selectedWashingmachine = washingmachineSelect.value;
     allWashingmachineTime[selectedWashingmachine].forEach(time => {
       const newOption = document.createElement("option");
       newOption.value = time;
       newOption.text = `${allData["time"][time]}`;
       timeSelect.appendChild(newOption);
     });
+
   }
   washingmachineSelect.onchange = initTime;
   initTime();
@@ -252,9 +264,6 @@ const initTable = () => {
     <div class="item board-item">${reservation.notification ? "🔔" : "🔔🚫"}</div>
     `;
   });
-  console.log(reservation.notification);
-
-
   boardContainerDiv.innerHTML = boardItemString;
 }
 
