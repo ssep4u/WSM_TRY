@@ -76,8 +76,9 @@ h1 {
 #calendar .other-month {
     color: #ddd !important;
 }
-#calendar .other-month:hover {
+#calendar .item:not(.week-name):not(.other-month):hover {
     background-color: #eee;
+    cursor: pointer;
 }
 
 .flex-container {
